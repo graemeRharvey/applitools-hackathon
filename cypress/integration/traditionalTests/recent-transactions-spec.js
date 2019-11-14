@@ -20,10 +20,13 @@ describe("Recent Transactions Sorting", () => {
       getElementHtml(row).then(html => { startingData.push(html) });
     });
 
-    const headersIndecies = [];
+    let amountHeaderIndex;
     cy.get(selectors.transactionsTable).find("th").each((columnHeader, i) => {
-      headersIndecies.push({name: columnHeader.attr("id").toLowerCase(), index: i});
+      if(columnHeader.attr("id").toLowerCase() === "amount") {
+        amountHeaderIndex = i;
+      }
     });
+
 
     cy.get(selectors.tableHeader("amount")).click();
 
@@ -39,8 +42,7 @@ describe("Recent Transactions Sorting", () => {
      });
     */
     cy.get(selectors.tableRow).each(row => {
-      const amountIndex = headersIndecies.find(h => h.name === "amount").index;
-      cy.wrap(row).find("td").eq(amountIndex).find("span").invoke("text").then(text => {
+      cy.wrap(row).find("td").eq(amountHeaderIndex).find("span").invoke("text").then(text => {
         amounts.push(parseAmountToFloat(text));
       });
 
