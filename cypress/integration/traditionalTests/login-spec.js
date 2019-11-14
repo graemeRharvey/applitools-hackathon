@@ -28,6 +28,9 @@ describe("Login Page", () => {
         cy.visit("/hackathon.html");
     });
   
+    // I wouldn't typically include a test like this in my Cypress suite. This seems like a perfect candidate
+    // for DOM snapshot testing. We can run that at unit test time and get quick, early feedback about any page
+    // layout and content changes.
     it("Contains all elements", () => {
         cy.get(selectors.header).assertTrimmedTextEquals('Login Form');
         cy.get(selectors.DivFormGroup).eq(0).find('label').eq(0).assertTrimmedTextEquals('Username');
@@ -45,6 +48,10 @@ describe("Login Page", () => {
         cy.get(selectors.ImgLinkedIn).should('be.visible');
     });
 
+    // These scenarios *could* be one data driven test, but
+    // we like the idea of getting quick and clear errors regarding
+    // which actual scenario failed. For example:
+    // Login Page - Cannot login with no user valid password failed
     it("Cannot login with no user or password", () => {
         cy.login('', '');
         cy.get(selectors.alertWarning).assertTrimmedTextEquals('Both Username and Password must be present');

@@ -35,6 +35,10 @@ describe("Recent Transactions", () => {
 
     let amounts = [];
     let sortedData = [];
+    // There's a lot of code here that would be easily cleaned up if we had access
+    // to the app source code to add some useful ids.
+    // For example, the amount fields could have an attribute added to make them
+    // easier to locate. It would become something simpler like cy.get(selectors.amountField).
     cy.get(selectors.tableRow).each(row => {
       const amountIndex = headersIndecies.find(h => h.name === "amount").index;
       cy.wrap(row).find("td").eq(amountIndex).find("span").invoke("text").then(text => {
