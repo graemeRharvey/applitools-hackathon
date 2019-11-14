@@ -12,7 +12,7 @@ describe("Advertisements", () => {
         cy.visit('/hackathonApp.html?showAd=true');
     });
   
-    // Admittedly, if there aren't two GIFs, this test will fail on that assertion
+    // If there aren't two GIFs, this test will fail on the count assertion
     // and not run the others. BUT, if there are two, we still want to ensure that they're
     // actually visible.
     it("Renders two ads after login", () => {
