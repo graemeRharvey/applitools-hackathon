@@ -40,7 +40,7 @@ describe("Recent Transactions", () => {
       cy.wrap(row).find("td").eq(amountIndex).find("span").invoke("text").then(text => {
         text = text.replace("USD", "").replace(" ", "").replace(",", "");
 
-        amounts.push(parseFloat(text)); // TODO: parse into number
+        amounts.push(parseFloat(text));
       })
 
       getElementHtml(row).then(html => {sortedData.push(html)});
