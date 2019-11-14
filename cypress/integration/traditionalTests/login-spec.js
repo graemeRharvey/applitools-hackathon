@@ -56,12 +56,12 @@ describe("Login Page", () => {
     });
 
     it("Cannot login with no user valid password", () => {
-        cy.login('', validUsername);
+        cy.login('', validPassword);
         cy.get(selectors.alertWarning).assertTrimmedTextEquals('Username must be present')
     });
 
     it("Can login with valid user and password", () => {
-        cy.login(validUsername, validUsername);
+        cy.login(validUsername, validPassword);
         cy.get(selectors.DivLoggedInUser).should('be.visible');
     });
 });
