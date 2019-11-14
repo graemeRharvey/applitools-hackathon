@@ -53,16 +53,12 @@ describe("Login Page", () => {
 
     it("Cannot login with valid user no password", () => {
         cy.login(validUsername, '');
-        cy.get(selectors.alertWarning).invoke('text').then((text) => {
-            expect(text.trim()).equal('Password must be present')
-        });
+        cy.get(selectors.alertWarning).assertTrimmedTextEquals('Password must be present')
     });
 
     it("Cannot login with no user valid password", () => {
         cy.login('', validUsername);
-        cy.get(selectors.alertWarning).invoke('text').then((text) => {
-            expect(text.trim()).equal('Username must be present')
-        });
+        cy.get(selectors.alertWarning).assertTrimmedTextEquals('Username must be present')
     });
 
     it("Can login with valid user and password", () => {
