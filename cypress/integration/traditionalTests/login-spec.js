@@ -71,7 +71,7 @@ describe("Login Page", () => {
     });
 });
 
-Cypress.Commands.add('login', (username, password, options = {}) => {
+Cypress.Commands.add('login', (username, password) => {
     if (username){
         cy.get(selectors.InputUsername).type(username);
     }
