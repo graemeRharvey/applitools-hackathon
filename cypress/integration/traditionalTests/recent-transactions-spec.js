@@ -9,11 +9,10 @@ const selectors = {
   tableHeader: function(id) { return `table#transactionsTable > thead th#${id}`}
 }
 
-const headersIndecies = [];
-
 const startingData = [];
-
-describe("Recent Transactions", () => {
+const amounts = [];
+const updatedData = [];
+describe("Recent Transactions Sorting", () => {
   before(() => {
     cy.visit("/hackathonApp.html");
 
@@ -21,16 +20,13 @@ describe("Recent Transactions", () => {
       getElementHtml(row).then(html => { startingData.push(html) });
     });
 
+    const headersIndecies = [];
     cy.get(selectors.transactionsTable).find("th").each((columnHeader, i) => {
       headersIndecies.push({name: columnHeader.attr("id").toLowerCase(), index: i});
     });
-  });
 
-  it("sort in ascending order", () => {
     cy.get(selectors.tableHeader("amount")).click();
 
-    let amounts = [];
-    let updatedData = [];
     /* There's a lot of code here that would be easily cleaned up if we had access
      to the app source code to add some useful ids.
      For example, the amount fields could have an attribute added to make them
@@ -49,10 +45,15 @@ describe("Recent Transactions", () => {
       });
 
       getElementHtml(row).then(html => {updatedData.push(html)});
-    }).then(() => {
-      expect(amounts).to.be.sorted({descending: false});
-      expect(updatedData.sort()).to.deep.equal(startingData.sort());
     });
+  });
+
+  it("sorts in ascending order", () => {
+    expect(amounts).to.be.sorted({descending: false});
+  });
+
+  it("maintains row integrity", () => {
+    expect(updatedData.sort()).to.deep.equal(startingData.sort());
   });
 });
 
