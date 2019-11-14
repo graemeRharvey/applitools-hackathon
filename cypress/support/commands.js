@@ -30,7 +30,7 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   const version = Cypress.env('APP_VERSION')
 
   if (version === 2) {
-    url = url.replace(/(hackathon).html/gi, "hackathonV2");
+    url = url.replace(/(.html)/gi, "V2.html");
   }
 
   return originalFn(url, options)
