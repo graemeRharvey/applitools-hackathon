@@ -14,6 +14,10 @@ describe("Recent Transactions", () => {
     cy.visit("/hackathonApp.html");
   });
 
+  afterEach(() => {
+    cy.eyesClose();
+  })
+
   it("sort in ascending order", () => {
     cy.eyesOpen({
         testName: 'Recent transactions table sorts ascending order',
@@ -30,7 +34,5 @@ describe("Recent Transactions", () => {
         sizeMode: 'selector',
         selector: selectors.transactionsTable
     });
-
-    cy.eyesClose();
   });
 });

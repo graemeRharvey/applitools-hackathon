@@ -9,8 +9,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "cypress:v1": "npx cypress open",
-    "cypress:v2": "CYPRESS_APP_VERSION=2 npx cypress open"
+    "cypress:v1": "npx cypress run",
+    "cypress:v2": "CYPRESS_APP_VERSION=2 npx cypress run"
   },
   "repository": {
     "type": "git",
