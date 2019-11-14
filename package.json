@@ -4,6 +4,7 @@
   "description": "Our submission for the applitools hackathon",
   "dependencies": {
     "@applitools/eyes-cypress": "^3.8.18",
+    "chai-sorted": "^0.2.0",
     "cypress": "^3.6.1"
   },
   "devDependencies": {},
