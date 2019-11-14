@@ -27,6 +27,13 @@ describe("Login Page", () => {
     beforeEach(() => {
         cy.visit("/hackathon.html");
     });
+
+    // This is just to not have the same command copied everywhere.
+    // I'd like to do this with eyes open, but adding the test name
+    // likely requires adding complexity...likely unnecessarily.
+    afterEach(() => {
+        cy.eyesClose();
+    })
   
     it("Contains all elements", () => {
         cy.eyesOpen({
@@ -34,8 +41,6 @@ describe("Login Page", () => {
         });
 
         cy.eyesCheckWindow('Login page');
-
-        cy.eyesClose();
     });
 
     it("Cannot login with no user or password", () => {
@@ -49,8 +54,6 @@ describe("Login Page", () => {
             sizeMode: 'selector',
             selector: selectors.alertWarning
         });
-
-        cy.eyesClose();
     });
 
     it("Cannot login with valid user no password", () => {
@@ -64,8 +67,6 @@ describe("Login Page", () => {
             sizeMode: 'selector',
             selector: selectors.alertWarning
         });
-
-        cy.eyesClose();
     });
 
     it("Cannot login with no user valid password", () => {
@@ -79,8 +80,6 @@ describe("Login Page", () => {
             sizeMode: 'selector',
             selector: selectors.alertWarning
         });
-
-        cy.eyesClose();
     });
 
     it("Can login with valid user and password", () => {
@@ -91,8 +90,6 @@ describe("Login Page", () => {
         cy.login(validUsername, validPassword);
 
         cy.eyesCheckWindow('Logged in');
-
-        cy.eyesClose();
     });
 });
 
