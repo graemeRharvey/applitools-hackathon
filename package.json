@@ -8,8 +8,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "cypress:v1": "CYPRESS_baseUrl=https://demo.applitools.com/hackathon.html npx cypress run",
-    "cypress:v2": "CYPRESS_baseUrl=https://demo.applitools.com/hackathonV2.html npx cypress run"
+    "cypress:v1": "npx cypress open",
+    "cypress:v2": "CYPRESS_APP_VERSION=2 npx cypress open"
   },
   "repository": {
     "type": "git",

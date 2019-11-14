@@ -6,7 +6,9 @@ describe("Login Page", () => {
   
     beforeEach(() => {});
   
-    it("Contains all elements", () => {});
+    it.only("Contains all elements", () => {
+        cy.visit("/hackathon.html");
+    });
 
     it("Cannot login with no user or password", () => {});
 

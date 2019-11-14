@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
+  const version = Cypress.env('APP_VERSION')
+
+  if (version === 2) {
+    url = url.replace(/(hackathon)(?!A)/g, "hackathonV2");
+  }
+
+  return originalFn(url, options)
+})
