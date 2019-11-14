@@ -23,8 +23,7 @@ const validPassword = 'password';
 
   
 describe("Login Page", () => {
-    before(() => {});
-  
+
     beforeEach(() => {
         cy.visit("/hackathon.html");
     });
