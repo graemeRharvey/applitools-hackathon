@@ -1,21 +1,10 @@
 /// <reference types="cypress" />
 
 const selectors = {
-    header: 'h4.auth-header',
     alertWarning: 'div.alert-warning',
-    DivFormGroup: 'div.form-group',
     InputUsername: '#username',
     InputPassword: '#password',
-    BtnLogin: '#log-in',
-    DivLoggedInUser: 'div.logged-user-w',
-    DivLogo: 'div.logo-w',
-    DivUsernameLogo: 'div.os-icon-user-male-circle',
-    DivPasswordLogo: 'div.os-icon-fingerprint',
-    InputRemember: 'input.form-check-input',
-    LabelRemember: 'label.form-check-label',
-    ImgTwitter: 'img[src$="twitter.png"]',
-    ImgFacebook: 'img[src$="facebook.png"]',
-    ImgLinkedIn: 'img[src$="linkedin.png"]'
+    BtnLogin: '#log-in'
 };
 
 const validUsername = 'testuser';

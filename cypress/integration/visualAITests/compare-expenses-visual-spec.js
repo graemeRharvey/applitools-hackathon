@@ -14,7 +14,7 @@ const selectors = {
     });
 
     after(() => {
-        cy.eyesClose();
+      cy.eyesClose();
     })
 
     it("adds valid 2019 data", () => {

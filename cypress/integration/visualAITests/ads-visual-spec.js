@@ -1,11 +1,5 @@
 /// <reference types="cypress" />
 
-const selectors = {
-    DivFlashSale1: 'div#flashSale',
-    DivFlashSale2: 'div#flashSale2',
-    ImgFlashSale: 'img[src$=".gif"]'
-};
-
 describe("Advertisements", () => {
 
     beforeEach(() => {
