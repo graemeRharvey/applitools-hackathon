@@ -18,13 +18,16 @@ const selectors = {
     })
 
     it("adds valid 2019 data", () => {
-      cy.eyesCheckWindow({
+        // Wait for the chart animation to finish before taking the snapshot
+        cy.wait(2000);
+        cy.eyesCheckWindow({
         sizeMode: 'selector',
         selector: selectors.chart
       });
   
       cy.get(selectors.addDatasetButton).click();
-
+      // Wait for the chart animation to finish before taking the snapshot
+      cy.wait(2000);
       cy.eyesCheckWindow({
         sizeMode: 'selector',
         selector: selectors.chart
