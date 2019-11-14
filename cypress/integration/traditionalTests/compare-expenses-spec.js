@@ -50,16 +50,15 @@ describe("Compare Expenses Chart", () => {
     cy.window().then(updatedWindow => {
       const actual = updatedWindow.barChartData.datasets[2];
 
-      // expectedNextYearData is correct to the chart data, however without access to the application
-      // source code we can't get the 2019 chart data once it is generated
-      // expect(actual).to.equal(expectedNextYearData)
       compareDatasets(expectedNextYearData, actual);
     });
   });
 });
 
 // This is copied from the page source.  In the real world I'd have access to the source code
-// And would refactor this function and import it to share the code.
+// and would refactor this function and import it to share the code. If someone decided to modify
+// how the app generated data, the change would instantly be reflected in the tests, since the
+// library is shared.
 const getNextYearData = function(window, barChartData) {
   var color = window.Chart.helpers.color;
   const colorNames = Object.keys(window.chartColors);
