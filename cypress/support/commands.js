@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -32,4 +34,10 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   }
 
   return originalFn(url, options)
+})
+
+Cypress.Commands.add('assertTrimmedTextEquals', { prevSubject: 'element' }, (subject, expectedText) => {
+  cy.wrap(subject).invoke('text').then((text) => {
+    expect(text.trim()).equal(expectedText)
+});
 })
